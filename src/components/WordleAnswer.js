@@ -8,10 +8,9 @@ const latestDate = `${date.getFullYear()}-${
   date.getMonth() + 1
 }-${date.getDate()}`;
 
-function UserArray(id, userid, name, email, placement, tries) {
+function UserArray(id, name, email, placement, tries) {
   return {
     id: id,
-    userid: userid,
     name: name,
     email: email,
     placement: placement,
@@ -31,15 +30,15 @@ function WordleAnswer() {
   );
 
   const [userContainers, SetUserContainers] = useState([
-    UserArray(0, 0, "Noah", "sggpixelgaming@gmail.com", null, null),
-    UserArray(1, 1, "Justice", "justicedbenezra@gmail.com", null, null),
-    UserArray(2, 1, "Mom", "sistercrystal@gmail.com", null, null),
+    UserArray(0, "Noah", "sggpixelgaming@gmail.com", null, null),
+    UserArray(1, "Justice", "justicedbenezra@gmail.com", null, null),
+    UserArray(2, "Mom", "sistercrystal@gmail.com", null, null),
   ]);
 
   const AddUser = () => {
     SetUserContainers([
       ...userContainers,
-      UserArray(userContainers.length, 3, "Example", "example@example.com", 0, 0),
+      UserArray(userContainers.length, "Example", "example@example.com", 0, 0),
     ]);
     console.log("New User Added");
   };
@@ -81,20 +80,20 @@ function WordleAnswer() {
       <div className="UserContainer" key={user.id}>
         <Gravatar className="Profile" email={user.email} />
         <p>{user.name}</p>
-        <select defaultValue={user.placement} name="num_time" id="num_time" onChange={handleChange(user.id)}>
+        <select className="numStat" defaultValue={user.placement} name="numTime" id="numTime" onChange={handleChange(user.id)}>
           <option value={null}>N/A</option>
-          <option value={3}>1st</option>
-          <option value={1}>2nd</option>
-          <option value={0}>3rd+</option>
+          <option value={3}>1ST </option>
+          <option value={1}>2ND </option>
+          <option value={0}>3RD+</option>
         </select>
-        <select defaultValue={user.tries} name="num_try" id="num_try" onChange={handleChange2(user.id)}>
+        <select className="numStat" defaultValue={user.tries} name="numTry" id="numTry" onChange={handleChange2(user.id)}>
           <option value={null}>N/A</option>
-          <option value={6}>1st</option>
-          <option value={5}>2nd</option>
-          <option value={4}>3rd</option>
-          <option value={3}>4th</option>
-          <option value={2}>5th</option>
-          <option value={1}>6th</option>
+          <option value={6}>1ST</option>
+          <option value={5}>2ND</option>
+          <option value={4}>3RD</option>
+          <option value={3}>4TH</option>
+          <option value={2}>5TH</option>
+          <option value={1}>6TH</option>
         </select>
         <p>Points: {(Number(user.placement)+Number(user.tries)) ? (Number(user.placement)+Number(user.tries)) : 'N/A'}</p>
       </div>
