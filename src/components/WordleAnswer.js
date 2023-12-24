@@ -50,7 +50,7 @@ function WordleAnswer() {
       .get("https://neal.fun/api/password-game/wordle?date=" + currentDate)
       .then((response) => {
         setData(response.data.answer);
-        console.log(response.data.answer);
+        console.log("Found Word");
       })
       .catch((error) => {
         console.error(error);
@@ -81,7 +81,7 @@ function WordleAnswer() {
     const listItems = userContainers.map((user) => (
       <div className="UserContainer" key={user.id}>
         <Gravatar className="Profile" email={user.email} />
-        <p>{user.name}</p>
+        <p className="UserName">{user.name}</p>
         <img className="StatIcon" src={TimeIMG} alt="" />
         <select className="numStat" defaultValue={user.placement} name="numTime" id="numTime" onChange={handleChange(user.id)}>
           <option value={null}>N/A</option>
@@ -99,7 +99,8 @@ function WordleAnswer() {
           <option value={2}>5TH</option>
           <option value={1}>6TH</option>
         </select>
-        <p>Points: {(Number(user.placement)+Number(user.tries)) ? (Number(user.placement)+Number(user.tries)) : 'N/A'}</p>
+        <p>Points</p>
+        <p className="UserPoints">{(Number(user.placement)+Number(user.tries)) ? (Number(user.placement)+Number(user.tries)) : 'N/A'}</p>
       </div>
     ));
 
