@@ -1,6 +1,9 @@
 {
   "short_name": "React App",
   "name": "Create React App Sample",
+  "permissions": [
+    "https://www.nytimes.com/"
+  ],
   "icons": [
     {
       "src": "favicon.ico",

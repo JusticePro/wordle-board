@@ -1,23 +1,14 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
+
 import './App.css';
+
+import WordleAnswer from './components/WordleAnswer';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p className='App-Title'>WORDLE<br />B O A R D</p>
+      <WordleAnswer />
     </div>
   );
 }
