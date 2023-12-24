@@ -71,6 +71,12 @@ function WordleAnswer() {
       <div className="UserContainer" key={user.id}>
         <Gravatar className="Profile" email={user.email} />
         <p>{user.name}</p>
+        <select name="num_time" id="num_time" onChange={handleChange(user.id)}>
+          <option value={0}>N/A</option>
+          <option value={3}>1st</option>
+          <option value={1}>2nd</option>
+          <option value={0}>3rd+</option>
+        </select>
         <select name="num_try" id="num_try" onChange={handleChange(user.id)}>
           <option value={0}>N/A</option>
           <option value={6}>1st</option>
@@ -79,12 +85,6 @@ function WordleAnswer() {
           <option value={3}>4th</option>
           <option value={2}>5th</option>
           <option value={1}>6th</option>
-        </select>
-        <select name="num_time" id="num_time" onChange={handleChange(user.id)}>
-          <option value={0}>N/A</option>
-          <option value={3}>1st</option>
-          <option value={1}>2nd</option>
-          <option value={0}>3rd+</option>
         </select>
         <p>Points: {user.points}</p>
       </div>
