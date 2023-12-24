@@ -27,14 +27,11 @@ html {
 }
 
 .Profile {
+  width: 4lh;
+  height: 4lh;
+  size: 200;
   border-radius: 2lh;
   transition: 0.25s all;
-}
-
-.Profile:hover {
-  width: 2.5lh;
-  height: 2.5lh;
-  cursor: pointer;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -116,6 +113,7 @@ html {
 }
 
 .UserName {
+  margin-top: 0.25lh;
   font-size: xx-large;
   font-weight: 600;
 }
@@ -169,23 +167,23 @@ html {
   border: #444b57;
   border-radius: 1lh;
   border-style: dashed;
-  padding-top: 0.5lh;
-  padding-bottom: 0.5lh;
+  padding-top: 0.75lh;
+  padding-bottom: 0.75lh;
   margin-bottom: 1.5lh;
-  width: 15lh;
+  width: 16.25lh;
 
   user-select: none;
   cursor: pointer;
 }
 
 .test {
-  margin-top: -2lh;
+  margin-top: -2.25lh;
   background-color: #121213;
   border-radius: 0.75lh;;
   color: #f8f8f8;
   font-weight: 500;
-  padding-left: 0.75lh;
-  padding-right: 0.75lh;
+  padding-left: 0.8lh;
+  padding-right: 0.8lh;
   padding-bottom: 0.05lh;
   transition: 0s;
 
