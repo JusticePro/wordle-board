@@ -9,41 +9,47 @@ export async function onRequestGet(context)
 
 export async function onRequestPost(context)
 {
-    let existingUserData = await context.env.db.get('user.' + context.params.user);
-    let userData;
-
     try
     {
-        userData = JSON.parse(existingUserData);
-    }catch (e)
-    {
-        userData =
+        let existingUserData = await context.env.db.get('user.' + context.params.user);
+        let userData;
+
+        try
         {
-            name: null,
-            email: null,
-        };
+            userData = JSON.parse(existingUserData);
+        }catch (e)
+        {
+            userData =
+            {
+                name: null,
+                email: null,
+            };
+            
+        }
         
-    }
-    
-    let inputData;
+        let inputData;
 
-    try
-    {
-        inputData = context.request.json();
+        try
+        {
+            inputData = context.request.json();
+        }catch (e)
+        {
+            return new Response(context.request.body);
+        }
+
+        // Go through each variable in the input, check if it exists, and change the user data in the database appropriately.
+        // This is to allow you to send a request to change only certain variables without having to send them all.
+        /*if (inputData.name !== null)
+            userData.name = inputData.name;
+        
+        if (inputData.email !== null)
+            userData.email = inputData.email;*/
+
+        await context.env.db.put('user.' + context.params.user, inputData);
+        
+        return new Response(inputData);
     }catch (e)
     {
-        return new Response(context.request.body);
+        return new Response(e.stack);
     }
-
-    // Go through each variable in the input, check if it exists, and change the user data in the database appropriately.
-    // This is to allow you to send a request to change only certain variables without having to send them all.
-    /*if (inputData.name !== null)
-        userData.name = inputData.name;
-    
-    if (inputData.email !== null)
-        userData.email = inputData.email;*/
-
-    await context.env.db.put('user.' + context.params.user, inputData);
-    
-    return new Response(inputData);
 }
