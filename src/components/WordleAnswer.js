@@ -100,7 +100,7 @@ function WordleAnswer() {
           <option value={1}>6TH</option>
           <option value={0}>DNF</option>
         </select>
-        <p>Points</p>
+        <p className="PointText">Points</p>
         <p className="UserPoints">{(Number(user.placement)+Number(user.tries)) ? (Number(user.placement)+Number(user.tries)) : 'N/A'}</p>
       </div>
     ));

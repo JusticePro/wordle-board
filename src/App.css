@@ -118,6 +118,11 @@ html {
   font-weight: 600;
 }
 
+.PointText {
+  font-weight: bold;
+  font-size: medium;
+}
+
 .UserPoints {
   margin-top: 0lh;
   font-size: xx-large;
