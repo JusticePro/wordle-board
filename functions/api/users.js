@@ -1,4 +1,10 @@
 export async function onRequestGet(context)
 {
-    return env.ASSETS.fetch('/');
+    try
+    {
+        return context.env.ASSETS.fetch('/');
+    }catch (e)
+    {
+        return new Response(e);
+    }
 }
