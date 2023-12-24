@@ -166,7 +166,7 @@ html {
 .WordleAnswer {
   border: #444b57;
   border-radius: 1lh;
-  border-style: dashed;
+  border-style: solid;
   padding-top: 0.75lh;
   padding-bottom: 0.75lh;
   margin-bottom: 1.5lh;
