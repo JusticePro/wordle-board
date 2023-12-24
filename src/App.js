@@ -18,6 +18,7 @@ function App() {
       <br/>
       <br/>
       Plus by arjuazka from <a href="https://thenounproject.com/browse/icons/term/plus/" rel="noreferrer" target="_blank" title="Plus Icons">Noun Project</a> (CC BY 3.0)
+      <br/>
       Crown by Rahmad romadoni from <a href="https://thenounproject.com/browse/icons/term/crown/" target="_blank" rel="noreferrer" title="Crown Icons">Noun Project</a> (CC BY 3.0)
       </p>
     </div>

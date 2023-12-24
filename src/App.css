@@ -93,6 +93,15 @@ html {
   cursor: pointer;
 }
 
+.Credits {
+  font-size: xx-small;
+  opacity: 65%;
+}
+
+.Credits a {
+  color: #61dafb;
+}
+
 .UserContainer {
   display: flex;
   flex-direction: column;
