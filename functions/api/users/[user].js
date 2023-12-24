@@ -4,5 +4,5 @@ export async function onRequest(context)
     /*if (userData === null)
         return Response.json({});*/
     
-    return userData;
+    return new Response(userData);
 }
