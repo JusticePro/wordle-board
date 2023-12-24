@@ -37,7 +37,9 @@ async function updateScoreListing(context, date, email)
     let participantList = await context.env.db.get(`results.${date}.participants`);
     if (!participantList)
         participantList = [];
-    
-    participantList.push(email);
+     
+    if (!participantList.includes(email))
+        participantList.push(email);
+
     await context.env.db.put(`results.${date}.participants`, JSON.stringify(participantList));
 }
