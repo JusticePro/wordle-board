@@ -133,8 +133,8 @@ function WordleAnswer() {
 
       {UserList()}
 
-      <button className="AppButton" img={PlusIMG} onClick={AddUser}>
-        <img className="AppButtonIMG" src={PlusIMG} />
+      <button className="AppButton" img={PlusIMG} alt="" onClick={AddUser}>
+        <img className="AppButtonIMG" src={PlusIMG} alt="" />
       </button>
     </>
   );
