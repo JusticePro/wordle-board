@@ -52,7 +52,7 @@ export async function onRequestPost(context)
 
         await context.env.db.put('user.' + context.params.user, JSON.stringify(userData));
         
-        return new Response(userData);
+        return new Response(JSON.stringify(userData));
     }catch (e)
     {
         return new Response(e.stack);
