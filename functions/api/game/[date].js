@@ -1,13 +1,59 @@
 /*
-Syntax:
+Syntax (GET):
+    url: /api/game/[date|yyyy-mm-dd]
+    ex: /api/game/2023-12-24
+
+    Response:
+    [
+        {
+            email: player@mail.com,
+            attemptScore: 6-1|null (based on points),
+            placementScore: 3|1|0
+        },
+        {
+            email: player@mail.com,
+            attemptScore: 6-1|null (based on points),
+            placementScore: 3|1|0
+        },
+        {
+            email: player@mail.com,
+            attemptScore: 6-1|null (based on points),
+            placementScore: 3|1|0
+        },
+    ]
+
+Syntax (POST):
     url: /api/game/[date|yyyy-mm-dd]
     ex: /api/game/2023-12-24
     {
         email: player@mail.com
-        attemptScore: 6 (based on points)
+        attemptScore: 6-1|null (based on points)
         placementScore: 3|1|0
     }
 */
+export async function onRequestGet(context)
+{
+    try
+    {
+        let participantList = JSON.parse(await context.env.db.get(`results.${date}.participants`));
+        if (!participantList)
+            return new Response([]);
+        
+        let gameResults = [];
+
+        for (const participant of participantList)
+        {
+            let results = await context.env.db.get(`results.${date}.${participant}`);
+            gameResults.push({email: results.email, attemptScore: results.attemptScore, placementScore: results.placementScore});
+        }
+        
+        return new Response(JSON.stringify(gameResults));
+    }catch (e)
+    {
+        return new Response(e.stack);
+    }
+}
+
 export async function onRequestPost(context)
 {
     try
