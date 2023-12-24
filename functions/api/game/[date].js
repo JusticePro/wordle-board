@@ -14,7 +14,7 @@ export async function onRequestPost(context)
     {
         const inputData = JSON.parse(await context.request.text());
         if (!inputData.email || !inputData.attemptScore || !inputData.placementScore)
-            return new Response('Syntax {email,attemptmentScore,placementScore}');
+            return new Response('Syntax {email,attemptScore,placementScore}');
 
         if (inputData.attemptScore < 1 || inputData.attemptScore > 6)
             return new Response('Invalid attempt score.');
