@@ -34,7 +34,7 @@ export async function onRequestPost(context)
 
 async function updateScoreListing(context, date, email)
 {
-    let participantList = await context.env.db.get(`results.${date}.participants`);
+    let participantList = JSON.parse(await context.env.db.get(`results.${date}.participants`));
     if (!participantList)
         participantList = [];
      
