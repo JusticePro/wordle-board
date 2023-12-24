@@ -29,7 +29,7 @@ export async function onRequestPost(context)
 
     try
     {
-        inputData = JSON.parse(context.request.body);
+        inputData = context.request.json();
     }catch (e)
     {
         return new Response(context.request.body);
