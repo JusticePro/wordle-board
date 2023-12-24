@@ -13,29 +13,10 @@ export async function onRequestPost(context)
     {
         let existingUserData = await context.env.db.get('user.' + context.params.user);
 
-        // Reads current user data. If it doesn't exist, then create base user data.
-        let userData;
+        let userData = {};
         if (existingUserData !== null)
         {
-            try
-            {
-                userData = JSON.parse(existingUserData);
-            }catch (e)
-            {
-                userData =
-                {
-                    name: null,
-                    email: null,
-                };
-                
-            }
-        }else
-        {
-            userData =
-            {
-                name: null,
-                email: null,
-            };
+            userData = JSON.parse(existingUserData);
         }
 
         
