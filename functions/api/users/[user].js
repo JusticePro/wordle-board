@@ -40,15 +40,7 @@ export async function onRequestPost(context)
 
         
         
-        let inputData;
-
-        try
-        {
-            inputData = context.request.json();
-        }catch (e)
-        {
-            return new Response(context.request.body);
-        }
+        let inputData = context.request.json();
 
         // Go through each variable in the input, check if it exists, and change the user data in the database appropriately.
         // This is to allow you to send a request to change only certain variables without having to send them all.
@@ -58,9 +50,9 @@ export async function onRequestPost(context)
         if (inputData.email !== null)
             userData.email = inputData.email;
 
-        await context.env.db.put('user.' + context.params.user, JSON.stringify(inputData));
+        await context.env.db.put('user.' + context.params.user, JSON.stringify(userData));
         
-        return new Response(inputData);
+        return new Response(userData);
     }catch (e)
     {
         return new Response(e.stack);
