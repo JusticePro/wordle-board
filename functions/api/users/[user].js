@@ -22,6 +22,7 @@ export async function onRequestPost(context)
             name: null,
             email: null,
         };
+        
     }
     
     let inputData;
@@ -31,7 +32,7 @@ export async function onRequestPost(context)
         inputData = JSON.parse(context.request.body);
     }catch (e)
     {
-        return new Response('Input data is not json');
+        return new Response(e.stack);
     }
 
     // Go through each variable in the input, check if it exists, and change the user data in the database appropriately.
