@@ -11,15 +11,16 @@ export async function onRequestPost(context)
 {
     try
     {
-        let existingUserData = await context.env.db.get('user.' + context.params.user);
+        const existingUserData = await context.env.db.get('user.' + context.params.user);
 
-        let userData = {};
-        if (existingUserData !== null)
+        let userData;
+        if (existingUserData === null)
+        {
+            userData = {};
+        }else
         {
             userData = JSON.parse(existingUserData);
         }
-
-        
         
         let inputData = await context.request.json();
 
