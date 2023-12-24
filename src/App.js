@@ -21,7 +21,7 @@ function App() {
       <br/>
       Crown by Rahmad romadoni from <a href="https://thenounproject.com/browse/icons/term/crown/" target="_blank" rel="noreferrer" title="Crown Icons">Noun Project</a> (CC BY 3.0)
       <br/>
-      Alarm by Putri Amaliya from <a href="https://thenounproject.com/browse/icons/term/alarm/" target="_blank" title="Alarm Icons">Noun Project</a> (CC BY 3.0)
+      Alarm by Putri Amaliya from <a href="https://thenounproject.com/browse/icons/term/alarm/" target="_blank" rel="noreferrer" title="Alarm Icons">Noun Project</a> (CC BY 3.0)
       </p>
     </div>
   );
