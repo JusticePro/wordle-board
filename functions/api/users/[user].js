@@ -40,7 +40,7 @@ export async function onRequestPost(context)
 
         
         
-        let inputData = context.request.json();
+        let inputData = await context.request.json();
 
         // Go through each variable in the input, check if it exists, and change the user data in the database appropriately.
         // This is to allow you to send a request to change only certain variables without having to send them all.
