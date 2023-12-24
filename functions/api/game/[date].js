@@ -21,8 +21,8 @@ export async function onRequestPost(context)
         
         if (inputData.placementScore < 0 || inputData.placementScore > 3)
             return new Response('Invalid placement score.');
-
-        await updateScoreListing(context.params.date, inputData.email);
+        
+        await updateScoreListing(context, context.params.date, inputData.email);
         await context.env.db.put('results.' + context.params.date + '.' + inputData.email, JSON.stringify(inputData));
         
         return new Response(JSON.stringify(inputData));
@@ -32,7 +32,7 @@ export async function onRequestPost(context)
     }
 }
 
-async function updateScoreListing(date, email)
+async function updateScoreListing(context, date, email)
 {
     let participantList = await context.env.db.get(`results.${date}.participants`);
     if (!participantList)
