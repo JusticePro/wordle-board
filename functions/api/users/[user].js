@@ -37,13 +37,13 @@ export async function onRequestPost(context)
 
     // Go through each variable in the input, check if it exists, and change the user data in the database appropriately.
     // This is to allow you to send a request to change only certain variables without having to send them all.
-    if (inputData.name !== null)
+    /*if (inputData.name !== null)
         userData.name = inputData.name;
     
     if (inputData.email !== null)
-        userData.email = inputData.email;
+        userData.email = inputData.email;*/
 
-    await context.env.db.put('user.' + context.params.user, userData);
+    await context.env.db.put('user.' + context.params.user, inputData);
     
-    return new Response(userData);
+    return new Response(inputData);
 }
