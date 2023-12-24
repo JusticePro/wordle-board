@@ -35,7 +35,7 @@ export async function onRequestGet(context)
 {
     try
     {
-        let participantList = JSON.parse(await context.env.db.get(`results.${date}.participants`));
+        let participantList = JSON.parse(await context.env.db.get(`results.${context.params.date}.participants`));
         if (!participantList)
             return new Response([]);
         
@@ -43,7 +43,7 @@ export async function onRequestGet(context)
 
         for (const participant of participantList)
         {
-            let results = await context.env.db.get(`results.${date}.${participant}`);
+            let results = await context.env.db.get(`results.${context.params.date}.${participant}`);
             gameResults.push({email: results.email, attemptScore: results.attemptScore, placementScore: results.placementScore});
         }
         
