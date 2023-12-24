@@ -1,4 +1,4 @@
-export async function onRequestGet(context)
+export function onRequestGet(context)
 {
     try
     {
