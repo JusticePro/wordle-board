@@ -43,7 +43,7 @@ export async function onRequestGet(context)
 
         for (const participant of participantList)
         {
-            let results = await context.env.db.get(`results.${context.params.date}.${participant}`);
+            let results = JSON.parse(await context.env.db.get(`results.${context.params.date}.${participant}`));
             gameResults.push({email: results.email, attemptScore: results.attemptScore, placementScore: results.placementScore});
         }
         
