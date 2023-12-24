@@ -14,7 +14,7 @@ export async function onRequestPost(context)
         const existingUserData = await context.env.db.get('user.' + context.params.user);
 
         let userData;
-        if (existingUserData === null)
+        if (!existingUserData)
         {
             userData = {};
         }else
@@ -33,7 +33,7 @@ export async function onRequestPost(context)
 
         await context.env.db.put('user.' + context.params.user, JSON.stringify(newData));
         
-        return new Response(JSON.stringify(inputData) + " " + JSON.stringify(newData) + " " + JSON.stringify(existingUserData) + " " + existingUserData + " " + (inputData.name == null) + (inputData.email == null) + (userData.name == null) + (userData.email == null));
+        return new Response(JSON.stringify(newData));
     }catch (e)
     {
         return new Response(e.stack);
