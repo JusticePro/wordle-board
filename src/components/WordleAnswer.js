@@ -8,12 +8,13 @@ const latestDate = `${date.getFullYear()}-${
   date.getMonth() + 1
 }-${date.getDate()}`;
 
-function UserArray(name, points, email, id) {
+function UserArray(id, name, email, placement, tries) {
   return {
     id: id,
     name: name,
-    points: points,
     email: email,
+    placement: placement,
+    tries: tries
   };
 }
 
@@ -29,15 +30,15 @@ function WordleAnswer() {
   );
 
   const [userContainers, SetUserContainers] = useState([
-    UserArray("Noah", 1, "sggpixelgaming@gmail.com", 0),
-    UserArray("Justice", 1, "justicedbenezra@gmail.com", 1),
-    UserArray("Mom", 1, "sistercrystal@gmail.com", 2),
+    UserArray(0, "Noah", "sggpixelgaming@gmail.com", 0, 0),
+    UserArray(1, "Justice", "justicedbenezra@gmail.com", 0, 0),
+    UserArray(2, "Mom", "sistercrystal@gmail.com", 0, 0),
   ]);
 
   const AddUser = () => {
     SetUserContainers([
       ...userContainers,
-      UserArray("Example", 1, "example@example.com", userContainers.length),
+      UserArray(userContainers.length, "Example", "example@example.com", 0, 0),
     ]);
     console.log("New User Added");
   };
@@ -62,7 +63,15 @@ function WordleAnswer() {
     const handleChange = (index) => (e) => {
       let newArr = [...userContainers];
 
-      newArr[index].points = e.target.value;
+      newArr[index].placement = e.target.value;
+
+      SetUserContainers(newArr);
+    };
+
+    const handleChange2 = (index) => (e) => {
+      let newArr = [...userContainers];
+
+      newArr[index].tries = e.target.value;
 
       SetUserContainers(newArr);
     };
@@ -77,7 +86,7 @@ function WordleAnswer() {
           <option value={1}>2nd</option>
           <option value={0}>3rd+</option>
         </select>
-        <select name="num_try" id="num_try" onChange={handleChange(user.id)}>
+        <select name="num_try" id="num_try" onChange={handleChange2(user.id)}>
           <option value={0}>N/A</option>
           <option value={6}>1st</option>
           <option value={5}>2nd</option>
@@ -86,7 +95,7 @@ function WordleAnswer() {
           <option value={2}>5th</option>
           <option value={1}>6th</option>
         </select>
-        <p>Points: {user.points}</p>
+        <p>Points: {(Number(user.placement)+Number(user.tries))}</p>
       </div>
     ));
 
@@ -126,7 +135,7 @@ function WordleAnswer() {
         </div>
       </div>
 
-      <p className="test" onClick={revealWord}>{wordleAnsVisible ? '[Hide Word]' : '[Reveal Word]'}</p>
+      <p className="test" onClick={revealWord}>{wordleAnsVisible ? "[Hide Word]" : "[Reveal Word]"}</p>
 
       <input
         type="date"
