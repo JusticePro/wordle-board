@@ -1,8 +1,8 @@
-export async function onRequestGet(context)
+export async function onRequest(context)
 {
     const userData = await context.env.db.get('user.' + context.params.user);
-    if (userData === null)
-        return Response.json({});
+    /*if (userData === null)
+        return Response.json({});*/
     
-    return Response.json(JSON.parse(userData));
+    return userData;
 }
