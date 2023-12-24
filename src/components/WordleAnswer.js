@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Gravatar from "react-gravatar";
 import axios from "axios";
 import PlusIMG from "./icons/plus.svg";
+import CrownIMG from "./icons/crown.svg";
+import TimeIMG from "./icons/time.svg";
 
 const date = new Date();
 const latestDate = `${date.getFullYear()}-${
@@ -80,12 +82,14 @@ function WordleAnswer() {
       <div className="UserContainer" key={user.id}>
         <Gravatar className="Profile" email={user.email} />
         <p>{user.name}</p>
+        <img className="StatIcon" src={TimeIMG} alt="" />
         <select className="numStat" defaultValue={user.placement} name="numTime" id="numTime" onChange={handleChange(user.id)}>
           <option value={null}>N/A</option>
-          <option value={3}>1ST </option>
-          <option value={1}>2ND </option>
+          <option value={3}>1ST</option>
+          <option value={1}>2ND</option>
           <option value={0}>3RD+</option>
         </select>
+        <img className="StatIcon" src={CrownIMG} alt="" />
         <select className="numStat" defaultValue={user.tries} name="numTry" id="numTry" onChange={handleChange2(user.id)}>
           <option value={null}>N/A</option>
           <option value={6}>1ST</option>

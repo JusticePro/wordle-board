@@ -115,6 +115,10 @@ html {
   margin: 0.5lh;
 }
 
+.StatIcon {
+  width: 2.75lh;
+}
+
 .UserStats {
   display: flex;
     margin-top: 2lh;
